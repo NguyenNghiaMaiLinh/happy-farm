@@ -1,81 +1,74 @@
 import { Link } from "react-router-dom";
+
 import {
-  Leaf,
-  Sprout,
-  Flower2,
+  CalendarDays,
+  Clock3,
+  User,
+  ArrowRight,
 } from "lucide-react";
 
 
-function Blog() {
+import { blogs } from "../data/blogs";
 
 
-  const posts = [
 
-    {
-      id: 1,
-
-      title: "Cách chọn đất trồng rau sạch tại nhà",
-
-      description:
-        "Hướng dẫn lựa chọn đất sạch, giá thể phù hợp giúp rau phát triển khỏe mạnh.",
-
-      icon: Leaf,
-
-    },
-
-
-    {
-      id: 2,
-
-      title: "Phân hữu cơ và cách sử dụng hiệu quả",
-
-      description:
-        "Tìm hiểu cách dùng phân bò, phân gà, phân cá để cải tạo đất và nuôi cây.",
-
-      icon: Sprout,
-
-    },
-
-
-    {
-      id: 3,
-
-      title: "Kỹ thuật chăm sóc cây ăn trái",
-
-      description:
-        "Các bước bón phân, chăm sóc giúp cây sinh trưởng tốt và cho năng suất cao.",
-
-      icon: Flower2,
-
-    },
-
-  ];
-
+export default function Blog() {
 
 
   return (
 
-    <div className="bg-gray-50 min-h-screen">
+    <main className="bg-gray-50 min-h-screen">
 
 
-      {/* Banner */}
+      {/* HERO */}
 
-      <section className="bg-green-700 py-20 text-center text-white">
+      <section
+        className="
+          bg-gradient-to-r
+          from-green-700
+          to-emerald-600
+          py-16
+        "
+      >
+
+        <div
+          className="
+            mx-auto
+            max-w-[1400px]
+            px-6
+          "
+        >
+
+          <h1
+            className="
+              text-4xl
+              font-black
+              text-white
+              md:text-5xl
+            "
+          >
+
+            Kiến thức làm vườn
+
+          </h1>
 
 
-        <h1 className="text-4xl font-bold">
+          <p
+            className="
+              mt-4
+              max-w-3xl
+              text-lg
+              text-green-50
+            "
+          >
 
-          Kiến thức nông nghiệp
+            Chia sẻ kinh nghiệm về đất sạch, giá thể,
+            phân bón và thiết kế khu vườn xanh tại nhà.
 
-        </h1>
+          </p>
 
 
-        <p className="mx-auto mt-4 max-w-2xl text-green-100">
-
-          Chia sẻ kinh nghiệm trồng cây, sử dụng đất và phân bón từ Happy Farm.
-
-        </p>
-
+        </div>
 
       </section>
 
@@ -85,55 +78,199 @@ function Blog() {
 
 
 
-      {/* Blog list */}
 
-      <section className="container mx-auto px-4 py-16">
+      {/* BLOG LIST */}
+
+      <section
+        className="
+          mx-auto
+          max-w-[1400px]
+          px-6
+          py-14
+        "
+      >
 
 
-        <div className="grid gap-8 md:grid-cols-3">
+
+        <div
+          className="
+            grid
+            gap-8
+            md:grid-cols-2
+            lg:grid-cols-3
+          "
+        >
 
 
 
           {
-            posts.map((post) => {
+            blogs.map((blog)=>(
 
 
-              const Icon = post.icon;
+              <article
+
+                key={blog.id}
+
+                className="
+                  overflow-hidden
+                  rounded-3xl
+                  bg-white
+                  shadow-sm
+                  transition
+                  hover:-translate-y-1
+                  hover:shadow-xl
+                "
+
+              >
 
 
 
-              return (
 
-                <article
+                {/* IMAGE */}
 
-                  key={post.id}
+                <Link to={`/blog/${blog.slug}`}>
 
-                  className="rounded-3xl bg-white p-8 shadow-md transition hover:-translate-y-2 hover:shadow-xl"
+                  <div
+                    className="
+                      h-60
+                      overflow-hidden
+                      bg-gray-100
+                    "
+                  >
 
-                >
+                    {
+                      blog.image
+                      ?
 
+                      <img
 
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700">
+                        src={blog.image}
 
-                    <Icon size={28}/>
+                        alt={blog.title}
+
+                        className="
+                          h-full
+                          w-full
+                          object-cover
+                          transition
+                          duration-500
+                          hover:scale-110
+                        "
+
+                        loading="lazy"
+
+                      />
+
+                      :
+
+                      <div
+                        className="
+                          flex
+                          h-full
+                          items-center
+                          justify-center
+                          text-gray-400
+                        "
+                      >
+
+                        Happy Farm
+
+                      </div>
+
+                    }
+
 
                   </div>
 
 
+                </Link>
 
 
-                  <h2 className="mt-6 text-2xl font-bold">
 
-                    {post.title}
+
+
+
+
+
+
+                {/* CONTENT */}
+
+                <div
+                  className="
+                    p-6
+                  "
+                >
+
+
+
+                  {/* CATEGORY */}
+
+                  <span
+                    className="
+                      inline-block
+                      rounded-full
+                      bg-green-100
+                      px-3
+                      py-1
+                      text-xs
+                      font-bold
+                      text-green-700
+                    "
+                  >
+
+                    {blog.category}
+
+                  </span>
+
+
+
+
+
+
+                  <h2
+                    className="
+                      mt-4
+                      line-clamp-2
+                      text-xl
+                      font-bold
+                      leading-snug
+                      text-gray-800
+                    "
+                  >
+
+                    <Link
+
+                      to={`/blog/${blog.slug}`}
+
+                      className="
+                        hover:text-green-700
+                      "
+
+                    >
+
+                      {blog.title}
+
+                    </Link>
+
 
                   </h2>
 
 
 
 
-                  <p className="mt-4 text-gray-600">
 
-                    {post.description}
+
+                  <p
+                    className="
+                      mt-3
+                      line-clamp-3
+                      text-sm
+                      leading-6
+                      text-gray-600
+                    "
+                  >
+
+                    {blog.description}
 
                   </p>
 
@@ -141,26 +278,125 @@ function Blog() {
 
 
 
+
+
+
+
+                  {/* META */}
+
+                  <div
+                    className="
+                      mt-5
+                      flex
+                      flex-wrap
+                      gap-4
+                      text-xs
+                      text-gray-500
+                    "
+                  >
+
+
+
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-1
+                      "
+                    >
+
+                      <CalendarDays size={14}/>
+
+                      {blog.date}
+
+                    </div>
+
+
+
+
+
+
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-1
+                      "
+                    >
+
+                      <Clock3 size={14}/>
+
+                      {blog.readTime}
+
+                    </div>
+
+
+
+
+
+
+                    <div
+                      className="
+                        flex
+                        items-center
+                        gap-1
+                      "
+                    >
+
+                      <User size={14}/>
+
+                      {blog.author}
+
+                    </div>
+
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+                  {/* BUTTON */}
+
                   <Link
 
-                    to="/contact"
+                    to={`/blog/${blog.slug}`}
 
-                    className="mt-6 inline-block font-semibold text-green-700 hover:text-green-900"
+                    className="
+                      mt-6
+                      inline-flex
+                      items-center
+                      gap-2
+                      font-bold
+                      text-green-700
+                      hover:text-green-800
+                    "
 
                   >
 
-                    Tư vấn thêm →
+                    Đọc tiếp
+
+                    <ArrowRight size={18}/>
+
 
                   </Link>
 
 
 
-                </article>
-
-              );
+                </div>
 
 
-            })
+
+              </article>
+
+
+
+            ))
           }
 
 
@@ -168,16 +404,15 @@ function Blog() {
         </div>
 
 
+
+
       </section>
 
 
 
-    </div>
+    </main>
+
 
   );
 
-
 }
-
-
-export default Blog;

@@ -5,7 +5,7 @@ const combos = [
 
     name: "Combo Ban Công 2m²",
 
-    image: "/images/combos/balcony.jpg",
+    image: "https://images.openai.com/static-rsc-4/6aR_9xJVkSijpS-ALb7z_2vUllzrA0i862QuX3tejsZccgHJDtcHY09_q9K20SGi-17qSvuqm9csPlLikD1AVtAYM7FHeIVhMtvzDNc8Jd3W9yMRy-r9pDx9NGfvQqM1X1JLK4LmKup97h36wDxwWpq5ktGGf2BEAUDt4X8BqsA?purpose=inline",
 
     price: "699.000đ",
 
@@ -26,7 +26,7 @@ const combos = [
 
     name: "Combo Sân Thượng 10m²",
 
-    image: "/images/combos/rooftop.jpg",
+    image: "https://images.openai.com/static-rsc-4/c7aNN5wh3cO7CXXzeLGXaWeBF-jhZA7a3latgXpeCz_IXuFrkgNat8yXzjjtpJHIevgyRkjLsIDRW0i_JV2OBkdnUFwrpv4-oK2q30TbNi_bWPMwnJ_I4vHAKPhcTld0Kxx2Z_ZuumKoDNNI9t3d_IOzLbqofBJTXtQkFoyx50Q?purpose=inline",
 
     price: "2.990.000đ",
 
@@ -47,7 +47,7 @@ const combos = [
 
     name: "Combo Người Mới Bắt Đầu",
 
-    image: "/images/combos/starter.jpg",
+    image: "https://images.openai.com/static-rsc-4/eCOKuQ1cxtlg_wutPsqKWEIgfdgxx6DdrzbXJwJPVJnxEfW6PMTE5Ttdk3pNXoYX7gH2wamSMkDldblGYfZrjHxUm3KFwAwGlPhfjhN958zIzWvrpz5bjfOx01Rf-BwDrOnF6hTckeFznwjgfJXL5F7kPBg-BSAfHkOcb6uJpApXu8IA6QDkaZIXnzdmjm_8?purpose=fullsize",
 
     price: "499.000đ",
 
@@ -68,7 +68,7 @@ const combos = [
 
     name: "Combo Trồng Rau 30 Ngày",
 
-    image: "/images/combos/vegetable.jpg",
+    image: "https://images.openai.com/static-rsc-4/erQVFPM4OAdSPwJTeR8kQ0wtbGIN4ogZa6X5SHn_mnSGwZR82bbV9651vHhwUp1wJ_v0pxl8vsViEbylP3syDDYH3dXNJ80i-Ir8WdzukL-fDhukH-DXT35WJeMEGE3RJ-O3nYTqkm3pvkGO5KHR018_9XnDb6tI_86kda3g86g?purpose=inline",
 
     price: "899.000đ",
 

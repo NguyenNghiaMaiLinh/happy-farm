@@ -1,436 +1,354 @@
 import { Link, useParams } from "react-router-dom";
 import {
-  ArrowLeft,
-  Check,
-  Phone,
-  MessageCircle,
-  Leaf,
+  CalendarDays,
+  Clock3,
+  User,
+  ChevronRight,
 } from "lucide-react";
 
-import products from "../data/products";
+import { blogs } from "../data/blogs";
 
 
-function ProductDetail() {
+export default function BlogDetail() {
+
+  const { slug } = useParams();
 
 
-  const { id } = useParams();
-
-
-  const product = products.find(
-    (item) => item.id === Number(id)
+  const blog = blogs.find(
+    (item) => item.slug === slug
   );
 
 
 
-  if (!product) {
+  if (!blog) {
 
     return (
+      <main className="
+        min-h-screen
+        flex
+        items-center
+        justify-center
+        bg-gray-50
+      ">
 
-      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
 
-        <h1 className="text-3xl font-bold text-red-600">
+          <h1 className="
+            text-3xl
+            font-bold
+            text-gray-800
+          ">
+            Không tìm thấy bài viết
+          </h1>
 
-          Không tìm thấy sản phẩm
 
-        </h1>
+          <Link
+            to="/blog"
+            className="
+              mt-6
+              inline-block
+              rounded-xl
+              bg-green-700
+              px-6
+              py-3
+              text-white
+              hover:bg-green-800
+            "
+          >
+            Quay lại Blog
+          </Link>
 
-      </div>
 
+        </div>
+
+
+      </main>
     );
 
   }
 
 
 
-
-
   return (
 
-    <div className="bg-gray-50 py-16">
+    <main className="
+      min-h-screen
+      bg-white
+    ">
 
 
-      <div className="container mx-auto px-4">
+      {/* Breadcrumb */}
+      <section className="
+        container
+        mx-auto
+        px-4
+        py-6
+      ">
 
+        <div className="
+          flex
+          flex-wrap
+          items-center
+          gap-2
+          text-sm
+          text-gray-500
+        ">
 
 
-        <Link
+          <Link
+            to="/"
+            className="hover:text-green-700"
+          >
+            Trang chủ
+          </Link>
 
-          to="/products"
 
-          className="mb-8 flex items-center gap-2 text-green-700"
+          <ChevronRight size={16}/>
 
-        >
 
-          <ArrowLeft size={20}/>
+          <Link
+            to="/blog"
+            className="hover:text-green-700"
+          >
+            Blog
+          </Link>
 
-          Quay lại sản phẩm
 
-        </Link>
+          <ChevronRight size={16}/>
 
 
+          <span className="line-clamp-1">
+            {blog.title}
+          </span>
 
 
+        </div>
 
+      </section>
 
 
-        <div className="rounded-3xl bg-white p-8 shadow-xl">
 
 
 
+      {/* Article */}
+      <article className="
+        container
+        mx-auto
+        max-w-4xl
+        px-4
+        pb-16
+      ">
 
 
-          <div className="grid gap-10 lg:grid-cols-2">
 
+        <span className="
+          inline-block
+          rounded-full
+          bg-green-100
+          px-4
+          py-1
+          text-sm
+          font-medium
+          text-green-700
+        ">
+          {blog.category}
+        </span>
 
 
 
 
-            {/* Image */}
+        <h1 className="
+          mt-5
+          text-3xl
+          font-bold
+          leading-tight
+          text-gray-800
+          md:text-5xl
+        ">
+          {blog.title}
+        </h1>
 
-            <div>
 
 
-              <img
 
-                src={product.image}
 
-                alt={product.name}
-
-                className="h-[500px] w-full rounded-3xl object-cover"
-
-              />
-
-
-            </div>
-
-
-
-
-
-
-
-
-            {/* Info */}
-
-            <div>
-
-
-
-              <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-semibold text-green-700">
-
-                {product.category}
-
-              </span>
-
-
-
-
-
-              <h1 className="mt-6 text-4xl font-bold text-gray-800">
-
-                {product.name}
-
-              </h1>
-
-
-
-
-
-
-
-              <div className="mt-5 flex gap-4">
-
-
-                <span className="text-3xl font-bold text-green-700">
-
-                  {product.price}
-
-                </span>
-
-
-
-                {
-                  product.oldPrice && (
-
-                    <span className="text-xl text-gray-400 line-through">
-
-                      {product.oldPrice}
-
-                    </span>
-
-                  )
-                }
-
-
-              </div>
-
-
-
-
-
-
-
-              <p className="mt-6 leading-8 text-gray-600">
-
-                {product.description}
-
-              </p>
-
-
-
-
-
-
-
-
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-
-
-                <a
-
-                  href="tel:0934073275"
-
-                  className="flex items-center justify-center gap-3 rounded-xl bg-green-600 py-4 font-bold text-white hover:bg-green-700"
-
-                >
-
-                  <Phone size={20}/>
-
-                  Gọi tư vấn
-
-                </a>
-
-
-
-
-
-                <a
-
-                  href="#"
-
-                  className="flex items-center justify-center gap-3 rounded-xl border-2 border-green-600 py-4 font-bold text-green-700 hover:bg-green-600 hover:text-white"
-
-                >
-
-                  <MessageCircle size={20}/>
-
-                  Chat Zalo
-
-                </a>
-
-
-
-              </div>
-
-
-            </div>
-
-
-
+        {/* Info */}
+        <div className="
+          mt-5
+          flex
+          flex-wrap
+          gap-5
+          text-sm
+          text-gray-500
+        ">
+
+
+          <div className="
+            flex
+            items-center
+            gap-2
+          ">
+            <CalendarDays size={17}/>
+            {blog.date}
           </div>
 
 
 
-
-
-
-
-
-
-          {/* Detail */}
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
-
-
-
-
-
-
-            {/* Benefits */}
-
-            <div className="rounded-3xl bg-green-50 p-8">
-
-
-              <h2 className="flex items-center gap-2 text-2xl font-bold text-green-700">
-
-                <Leaf/>
-
-                Công dụng nổi bật
-
-              </h2>
-
-
-              <ul className="mt-5 space-y-3">
-
-
-                {
-                  product.benefits?.map((item,index)=>(
-
-                    <li
-
-                      key={index}
-
-                      className="flex gap-3"
-
-                    >
-
-                      <Check className="text-green-600"/>
-
-                      {item}
-
-                    </li>
-
-                  ))
-                }
-
-
-              </ul>
-
-
-            </div>
-
-
-
-
-
-
-
-
-            {/* Ingredients */}
-
-            <div className="rounded-3xl bg-gray-100 p-8">
-
-
-              <h2 className="text-2xl font-bold text-gray-800">
-
-                Thành phần
-
-              </h2>
-
-
-              <ul className="mt-5 space-y-3">
-
-
-                {
-                  product.ingredients?.map((item,index)=>(
-
-                    <li
-
-                      key={index}
-
-                      className="flex gap-3"
-
-                    >
-
-                      <Check className="text-green-600"/>
-
-                      {item}
-
-                    </li>
-
-                  ))
-                }
-
-
-              </ul>
-
-
-            </div>
-
-
-
+          <div className="
+            flex
+            items-center
+            gap-2
+          ">
+            <Clock3 size={17}/>
+            {blog.readTime}
           </div>
 
 
 
-
-
-
-
-
-
-          {/* Usage */}
-
-          <div className="mt-8 rounded-3xl bg-white border p-8">
-
-
-            <h2 className="text-2xl font-bold text-green-700">
-
-              Hướng dẫn sử dụng
-
-            </h2>
-
-
-            <p className="mt-4 leading-8 text-gray-600">
-
-              {product.usage}
-
-            </p>
-
-
+          <div className="
+            flex
+            items-center
+            gap-2
+          ">
+            <User size={17}/>
+            {blog.author}
           </div>
-
-
-
-
-
-
-
-
-
-          {/* Suitable */}
-
-          <div className="mt-8 rounded-3xl bg-green-700 p-8 text-white">
-
-
-            <h2 className="text-2xl font-bold">
-
-              Phù hợp cho
-
-            </h2>
-
-
-            <div className="mt-5 flex flex-wrap gap-3">
-
-
-              {
-                product.suitableFor?.map((item,index)=>(
-
-                  <span
-
-                    key={index}
-
-                    className="rounded-full bg-white/20 px-5 py-2"
-
-                  >
-
-                    {item}
-
-                  </span>
-
-
-                ))
-              }
-
-
-            </div>
-
-
-          </div>
-
 
 
         </div>
 
 
-      </div>
 
 
-    </div>
+
+
+        {/* Image */}
+        {blog.image && (
+
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="
+              mt-8
+              h-auto
+              max-h-[520px]
+              w-full
+              rounded-2xl
+              object-cover
+            "
+          />
+
+        )}
+
+
+
+
+
+
+
+        {/* Content */}
+        <div className="
+          mt-10
+          text-lg
+          leading-8
+          text-gray-700
+        ">
+
+
+          <p>
+            {blog.description}
+          </p>
+
+
+
+          <h2 className="
+            mt-10
+            text-2xl
+            font-bold
+            text-green-700
+          ">
+            Giới thiệu
+          </h2>
+
+
+          <p className="mt-4">
+            Happy Farm cung cấp các giải pháp về đất sạch,
+            phân bón, giá thể và vật tư làm vườn cho gia đình,
+            ban công và sân thượng.
+          </p>
+
+
+
+          <h2 className="
+            mt-10
+            text-2xl
+            font-bold
+            text-green-700
+          ">
+            Kinh nghiệm áp dụng thực tế
+          </h2>
+
+
+          <p className="mt-4">
+            Khi trồng cây tại nhà, việc lựa chọn đúng loại đất,
+            dinh dưỡng và phương pháp chăm sóc sẽ quyết định
+            khả năng sinh trưởng của cây.
+          </p>
+
+
+
+          <p className="mt-4">
+            Người trồng nên kết hợp đất sạch,
+            phân hữu cơ và chế độ bổ sung dinh dưỡng
+            phù hợp theo từng giai đoạn phát triển.
+          </p>
+
+
+        </div>
+
+
+
+
+
+
+        {/* Back */}
+        <div className="
+          mt-12
+          border-t
+          pt-8
+        ">
+
+          <Link
+            to="/blog"
+            className="
+              inline-flex
+              items-center
+              gap-2
+              font-semibold
+              text-green-700
+              hover:text-green-800
+            "
+          >
+
+            <ChevronRight
+              size={18}
+              className="rotate-180"
+            />
+
+            Xem thêm bài viết
+
+          </Link>
+
+
+        </div>
+
+
+
+      </article>
+
+
+    </main>
 
   );
 
 }
-
-
-export default ProductDetail;

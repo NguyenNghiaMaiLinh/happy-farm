@@ -31,16 +31,15 @@ function Home() {
     <div className="home-page">
 
 
-      {/* TOP */}
+      {/* TOP
 
       <TopBar />
 
 
       {/* HEADER */}
 
-      <Header />
-
-
+      {/* <Header /> */}
+ 
 
 
 
